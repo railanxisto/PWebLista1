@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<%@page import="DAO.TurmaDAO"%>
+<%@page import="Servlets.TurmaDAO"%>
 <%@page import="model.Turmas"%>
-<%@page import="DAO.MatriculaDAO"%>
-<%@page import="DAO.DisciplinaDAO"%>
+<%@page import="Servlets.MatriculaDAO"%>
+<%@page import="Servlets.DisciplinaDAO"%>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Matriculas"%>
@@ -18,7 +18,7 @@
 	}
 	
 	function voltar(param){
-		window.location="../../Controle/controleLogin.jsp?action=Logout"; 
+		window.location="../../Servlet/servletLogin.jsp?action=Logout"; 
 	}
 	
 		function closePage(){

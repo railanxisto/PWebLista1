@@ -1,4 +1,4 @@
-package DAO;
+package Servlets;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,19 +8,22 @@ import java.sql.SQLException;
 import Conexao.Conexao;
 import model.Aluno;
 
-public class DisciplinaDAO {
-	public static String getDisciplina(String codDisciplina) throws SQLException{
+public class AlunoDAO {	
+	public Aluno loginAluno(long matricula) throws SQLException{
 		Connection con = new Conexao().getConnection();
-		String sql = "SELECT NOMEDISCIPLINA FROM DISCIPLINAS WHERE codDisciplina=?";
-		String nome = "";
+		String sql = "SELECT * FROM ALUNOS WHERE matricula=?";
+		Aluno aluno = new Aluno();
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, codDisciplina);
+		statement.setLong(1, matricula);
 		ResultSet rs = statement.executeQuery();
 		while (rs.next()){
-			nome = rs.getString(1);
+			aluno.setMatricula(rs.getLong(1));
+			aluno.setNomeAluno(rs.getString(2));
+			aluno.setCodCurso(rs.getInt(3));
+			return aluno;
 		}
 		statement.close();
 		con.close();
-		return nome;
+		return null;
 	}
 }

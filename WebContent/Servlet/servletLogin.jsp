@@ -1,4 +1,4 @@
-<%@page import="DAO.AlunoDAO"%>
+<%@page import="Servlets.AlunoDAO"%>
 <%@page import="model.Aluno"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

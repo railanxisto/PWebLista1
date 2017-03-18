@@ -1,8 +1,9 @@
-<%@page import="DAO.DisciplinaDAO"%>
+<%@page import="Servlets.MatriculaDAO"%>
+<%@page import="Servlets.DisciplinaDAO"%>
 <%@page import="model.Aluno"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" %>
-<%@page import="DAO.TurmaDAO"%>
+<%@page import="Servlets.TurmaDAO"%>
 <%@page import="model.Turmas"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -110,7 +111,7 @@
                     <ul class="dropdown-menu dropdown-user">
        
 							 <li class="divider"></li>
-                        <li><a href="../../Controle/controleLogin.jsp?action=Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="../../Servlet/servletLogin.jsp?action=Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -136,7 +137,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
-                            <form method="post" id="formLogin" role="form" name="formLogin" action="../../Controle/controleListTurmas.jsp">
+                            <form method="post" id="formLogin" role="form" name="formLogin" action="../../Servlet/servletListTurmas.jsp">
                             	<input type="hidden" name="quantidade" value="<%=turmasList.size()%>">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -161,8 +162,8 @@
 														<%=TurmaDAO.tratarHorario(turmasList.get(i).getHorario1())%>
                                             			<% if(turmasList.get(i).getHorario2() != 0){%> e <%=TurmaDAO.tratarHorario(turmasList.get(i).getHorario2()) %> <%} %> 
                                             			<% if(turmasList.get(i).getHorario3() != 0){%> e <%=TurmaDAO.tratarHorario(turmasList.get(i).getHorario3()) %> <%} %>                                            
-                                            </td>
-                                            <td><center><INPUT TYPE="checkbox" id="a<%=i%>" NAME="a<%=i%>" VALUE="<%=i%>" onclick=""></td> 
+                                            </td>                                        
+                                            <td><center><INPUT TYPE="checkbox" id="a<%=i%>" NAME="a<%=i%>" VALUE="<%=i%>" onclick="" <% if(MatriculaDAO.verificarMat(matricula,turmasList.get(i).getCodTurma(), turmasList.get(i).getCodDisciplina())){%> checked<%}%>></td> 
                                         </tr>
                                     <%} %>
                                     </tbody>

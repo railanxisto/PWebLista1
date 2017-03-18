@@ -1,5 +1,5 @@
-<%@page import="DAO.MatriculaDAO"%>
-<%@page import="DAO.TurmaDAO"%>
+<%@page import="Servlets.MatriculaDAO"%>
+<%@page import="Servlets.TurmaDAO"%>
 <%@page import="model.Matriculas"%>
 <%@page import="model.Aluno"%>
 <%@page import="model.Turmas"%>
@@ -35,6 +35,7 @@
 	ArrayList<Turmas> turmasList = new ArrayList<Turmas>();
    	turmasList = TurmaDAO.getTurmas();
 	MatriculaDAO matriculaDAO = new MatriculaDAO();
+	matriculaDAO.deletarMatriculas(matricula);
 	for (int i = 0; i < quantidade; i++){
 		boolean myCheckBox = request.getParameter("a"+i) != null;
 		if(myCheckBox){	
